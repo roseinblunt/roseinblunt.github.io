@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>roseinblunt!</title>
 
-<!-- ВИНТАЖНЫЙ ШРИФТ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
@@ -19,21 +18,15 @@ body {
     color: white;
 }
 
-/* ВИДЕО ФОН */
+/* ВИДЕО */
 #bg-video {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
     min-width: 100vw;
     min-height: 100vh;
-    
-    width: auto;
-    height: auto;
-    
     object-fit: cover;
-    
     z-index: -2;
 }
 
@@ -57,14 +50,21 @@ body {
     flex-direction: column;
 }
 
-/* логотип */
+/* 🔥 ЛОГО С VHS ТРЯСКОЙ */
 .logo {
     width: 300px;
-    height: auto;
     margin-bottom: 50px;
     filter: drop-shadow(0 0 12px rgba(255,255,255,0.15));
-    
-    animation: float 5s ease-in-out infinite;
+    animation: shake 0.12s infinite;
+}
+
+/* тряска как пленка */
+@keyframes shake {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    25% { transform: translate(1px, -1px) rotate(-0.3deg); }
+    50% { transform: translate(-1px, 1px) rotate(0.3deg); }
+    75% { transform: translate(1px, 1px) rotate(-0.2deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
 }
 
 /* кнопка */
@@ -82,32 +82,21 @@ a:hover {
     color: black;
 }
 
-/* лёгкое “дыхание” */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
-    100% { transform: translateY(0px); }
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- ВИДЕО -->
 <video autoplay muted loop id="bg-video">
   <source src="video2.mp4" type="video/mp4">
 </video>
 
 <div class="overlay"></div>
 
-<!-- КОНТЕНТ -->
 <div class="container">
     <img src="logo.png" class="logo">
     <a href="links.html">LISTEN</a>
 </div>
 
-</body>
-</html>
 </body>
 </html>
