@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>roseinblunt!_test2</title>
+<title>roseinblunt!_test4</title>
 <link rel="icon" type="image/x-icon" href="favicon5.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,7 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0,0,0,0);
     z-index: -1;
 }
 
@@ -60,6 +60,12 @@ body {
     animation: 
         shake 0.25s infinite,
         flicker 2s infinite;
+    
+     mix-blend-mode: difference;
+
+    filter: 
+        drop-shadow(0 0 8px rgba(255,255,255,0.6))
+        drop-shadow(0 0 20px rgba(255,255,255,0.3));
 }
 
 /* тряска как пленка */
@@ -87,10 +93,9 @@ a {
     text-decoration: none;
     letter-spacing: 2px;
     transition: 0.3s;
-    mix-blend-mode: difference;
-    text-shadow: 
-        1px 0 red,
-        -1px 0 blue;
+   
+    text-shadow: 0 0 5px white;
+     mix-blend-mode: difference;
 }
 
 a:hover {
