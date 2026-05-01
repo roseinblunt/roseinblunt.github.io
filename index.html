@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>roseinblunt!</title>
+<title>ROSE IN BLUNT</title>
+
+<!-- ВИНТАЖНЫЙ ШРИФТ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
 
 <style>
+
 body {
     margin: 0;
     overflow: hidden;
     background: black;
-    font-family: Cinzel, serif;
+    font-family: 'IM Fell English', serif;
     color: white;
 }
 
@@ -25,7 +31,9 @@ body {
     
     width: auto;
     height: auto;
-    background: black;
+    
+    object-fit: cover;
+    
     z-index: -2;
 }
 
@@ -34,11 +42,11 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.55);
     z-index: -1;
 }
 
-/* контент */
+/* центр */
 .container {
     position: relative;
     z-index: 1;
@@ -49,21 +57,23 @@ body {
     flex-direction: column;
 }
 
-h1 {
-    font-size: 60px;
-    letter-spacing: 8px;
+/* логотип */
+.logo {
+    width: 320px;
+    height: auto;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.15));
+    
+    animation: float 5s ease-in-out infinite;
 }
 
-p {
-    opacity: 0.7;
-    margin-bottom: 20px;
-}
-
+/* кнопка */
 a {
     color: white;
     border: 1px solid white;
-    padding: 10px 20px;
+    padding: 10px 22px;
     text-decoration: none;
+    letter-spacing: 2px;
     transition: 0.3s;
 }
 
@@ -71,6 +81,14 @@ a:hover {
     background: white;
     color: black;
 }
+
+/* лёгкое “дыхание” */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
 </style>
 </head>
 
@@ -83,11 +101,13 @@ a:hover {
 
 <div class="overlay"></div>
 
+<!-- КОНТЕНТ -->
 <div class="container">
     <img src="logo.png" class="logo">
-   <!-- <p>soon you will see</p> -->
-    <a href="#">merch</a>
+    <a href="#">LISTEN</a>
 </div>
 
+</body>
+</html>
 </body>
 </html>
