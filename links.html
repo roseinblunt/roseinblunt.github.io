@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>roseinblunt! — links</title>
@@ -18,7 +19,7 @@ body {
     color: white;
 }
 
-/* ВИДЕО */
+/* ВИДЕО ФОН */
 #bg-video {
     position: fixed;
     top: 50%;
@@ -49,20 +50,22 @@ body {
     flex-direction: column;
 }
 
-/* ссылки */
+/* кнопки */
 .link {
     margin: 8px;
     padding: 12px 30px;
+    border: 0px solid white;
     color: white;
     text-decoration: none;
     letter-spacing: 2px;
-    text-shadow: 0 0 5px white;
-    animation: shake 0.2s infinite;
     transition: 0.3s;
+    text-shadow: 0 0 5px white;
+    mix-blend-mode: difference;
+    animation: shake 0.2s infinite;
 }
 
 .link:hover {
-    opacity: 0.6;
+   opacity: 0.6;
 }
 
 /* тряска */
@@ -72,22 +75,15 @@ body {
     100% { transform: translate(0px, 0px); }
 }
 
-/* 🔥 КНОПКА ВОЗВРАТА */
+/* кнопка назад */
 .back {
     position: fixed;
-    top: 20px;
-    left: 20px;
-
+    bottom: 30px;
     font-size: 12px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     opacity: 0.4;
     cursor: pointer;
-
     transition: 0.3s;
-    text-decoration: none;
-    color: white;
-
-    text-shadow: 0 0 5px white;
 }
 
 .back:hover {
@@ -96,10 +92,12 @@ body {
 
 /* адаптив */
 @media (max-width: 768px) {
+
     .link {
         font-size: 14px;
         padding: 10px 20px;
     }
+
 }
 
 </style>
@@ -113,26 +111,25 @@ body {
 
 <div class="overlay"></div>
 
-<!-- 🔥 ВОЗВРАТ -->
-<a class="back" href="index.html">† RETURN †</a>
-
 <div class="container">
 
     <a class="link" href="https://soundcloud.com/roseinblunt?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank">† SØUNDCLØUD †</a>
-
     <a class="link" href="https://open.spotify.com/artist/4tIKczrEo6trUkUALAy8gq?si=TZkmQsIdSjueEPrQpxYk3Q&nd=1&dlsi=6eedb40fe7964f90" target="_blank">† SPØTIFY †</a>
-
     <a class="link" href="https://www.youtube.com/channel/UC5IjZwjC7uOUaZ1RBVH6KsA" target="_blank">† YØUTUBE †</a>
-
     <a class="link" href="https://music.apple.com/us/artist/roseinblunt/1802382899" target="_blank">† ÅPPLE MÜSIC †</a>
-
     <a class="link" href="https://www.tiktok.com/@roseinbluntt?_t=ZS-8zFvttYuRSK&_r=1" target="_blank">† TIK†TOK †</a>
-
     <a class="link" href="https://www.instagram.com/roseinblunt" target="_blank">† INSTÅGRÅM †</a>
-
     <a class="link" href="https://t.me/roseinbluntt" target="_blank">† TELEGRÅM †</a>
 
 </div>
+
+<div class="back" onclick="goBack()">† RETURN †</div>
+
+<script>
+function goBack() {
+    window.location.href = "index.html";
+}
+</script>
 
 </body>
 </html>
