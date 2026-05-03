@@ -79,11 +79,19 @@ body {
 .back {
     position: fixed;
     bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    z-index: 10;
+
     font-size: 12px;
     letter-spacing: 3px;
     opacity: 0.4;
     cursor: pointer;
     transition: 0.3s;
+
+    color: white;
+    text-shadow: 0 0 5px white;
 }
 
 .back:hover {
