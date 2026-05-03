@@ -91,17 +91,33 @@ body {
 }
 
 /* GLITCH EFFECT */
-.glitch {
-    animation: glitch 0.25s;
+.glitch-transition {
+    animation: glitchBurst 0.25s ease-in-out;
 }
 
-@keyframes glitch {
-    0% { transform: translate(0); filter: invert(0); }
-    20% { transform: translate(-5px, 3px); }
-    40% { transform: translate(5px, -3px); }
-    60% { transform: translate(-3px, 2px); }
-    80% { transform: translate(3px, -2px); }
-    100% { transform: translate(0); filter: invert(0); }
+@keyframes glitchBurst {
+    0% {
+        transform: translate(0);
+        filter: none;
+    }
+    20% {
+        transform: translate(-6px, 3px);
+        filter: invert(1);
+    }
+    40% {
+        transform: translate(6px, -3px);
+        filter: invert(0);
+    }
+    60% {
+        transform: translate(-3px, 2px);
+    }
+    80% {
+        transform: translate(3px, -2px);
+    }
+    100% {
+        transform: translate(0);
+        filter: none;
+    }
 }
 
 </style>
@@ -130,15 +146,13 @@ body {
 <div class="back" onclick="goBack()">† RETURN †</div>
 
 <script>
-
 function goBack() {
-    document.body.classList.add("glitch");
+    document.body.classList.add("glitch-transition");
 
     setTimeout(() => {
         window.location.href = "index.html";
-    }, 200);
+    }, 220);
 }
-
 </script>
 
 </body>
