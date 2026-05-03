@@ -96,34 +96,22 @@ body {
 }
 
 @keyframes glitchBurst {
-    0% {
-        transform: translate(0);
-        filter: none;
-    }
-    20% {
-        transform: translate(-6px, 3px);
-        filter: invert(1);
-    }
-    40% {
-        transform: translate(6px, -3px);
-        filter: invert(0);
-    }
-    60% {
-        transform: translate(-3px, 2px);
-    }
-    80% {
-        transform: translate(3px, -2px);
-    }
-    100% {
-        transform: translate(0);
-        filter: none;
-    }
+    0% { transform: translate(0); filter: none; }
+    20% { transform: translate(-6px, 3px); filter: invert(1); }
+    40% { transform: translate(6px, -3px); filter: invert(0); }
+    60% { transform: translate(-3px, 2px); }
+    80% { transform: translate(3px, -2px); }
+    100% { transform: translate(0); filter: none; }
 }
 
 </style>
 </head>
 
 <body>
+
+<!-- 🔊 AUDIO -->
+<audio id="hoverSound" src="hover.mp3"></audio>
+<audio id="clickSound" src="click.mp3"></audio>
 
 <video autoplay muted loop playsinline id="bg-video">
   <source src="video.mp4" type="video/mp4">
@@ -146,13 +134,54 @@ body {
 <div class="back" onclick="goBack()">† RETURN †</div>
 
 <script>
+
+/* 🔓 разблокировка звука */
+let audioUnlocked = false;
+const hoverSound = document.getElementById("hoverSound");
+const clickSound = document.getElementById("clickSound");
+
+function unlockAudio() {
+    if (!audioUnlocked) {
+        audioUnlocked = true;
+    }
+}
+
+document.addEventListener("click", unlockAudio);
+document.addEventListener("mousemove", unlockAudio);
+
+/* 🔊 hover */
+document.querySelectorAll(".link, .back").forEach(el => {
+    el.addEventListener("mouseenter", () => {
+        if (!audioUnlocked) return;
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+    });
+});
+
+/* 🔊 click на ссылки */
+document.querySelectorAll(".link").forEach(el => {
+    el.addEventListener("click", () => {
+        if (!audioUnlocked) return;
+        clickSound.currentTime = 0;
+        clickSound.play();
+    });
+});
+
+/* 🔊 RETURN */
 function goBack() {
+
+    if (audioUnlocked) {
+        clickSound.currentTime = 0;
+        clickSound.play();
+    }
+
     document.body.classList.add("glitch-transition");
 
     setTimeout(() => {
         window.location.href = "index.html";
     }, 220);
 }
+
 </script>
 
 </body>
