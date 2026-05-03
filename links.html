@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>roseinblunt! — links</title>
+
 <link rel="icon" type="image/x-icon" href="favicon5.ico">
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
 
@@ -18,7 +18,7 @@ body {
     color: white;
 }
 
-/* ВИДЕО ФОН */
+/* ВИДЕО */
 #bg-video {
     position: fixed;
     top: 50%;
@@ -49,47 +49,59 @@ body {
     flex-direction: column;
 }
 
-/* кнопки */
+/* ссылки */
 .link {
     margin: 8px;
     padding: 12px 30px;
-    border: 0px solid white;
     color: white;
     text-decoration: none;
     letter-spacing: 2px;
-    transition: 0.3s;
     text-shadow: 0 0 5px white;
-     mix-blend-mode: difference;
+    animation: shake 0.2s infinite;
+    transition: 0.3s;
 }
 
 .link:hover {
-   opacity: 0.6;
+    opacity: 0.6;
 }
 
-/* лёгкая тряска текста */
-.link {
-    animation: shake 0.2s infinite;
-}
-
+/* тряска */
 @keyframes shake {
     0% { transform: translate(0px, 0px); }
     50% { transform: translate(1px, -1px); }
     100% { transform: translate(0px, 0px); }
 }
 
+/* 🔥 КНОПКА ВОЗВРАТА */
+.back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
 
+    font-size: 12px;
+    letter-spacing: 2px;
+    opacity: 0.4;
+    cursor: pointer;
 
-    @media (max-width: 768px) {
+    transition: 0.3s;
+    text-decoration: none;
+    color: white;
 
+    text-shadow: 0 0 5px white;
+}
+
+.back:hover {
+    opacity: 0.8;
+}
+
+/* адаптив */
+@media (max-width: 768px) {
     .link {
         font-size: 14px;
         padding: 10px 20px;
     }
-
 }
 
-
-    
 </style>
 </head>
 
@@ -101,14 +113,23 @@ body {
 
 <div class="overlay"></div>
 
+<!-- 🔥 ВОЗВРАТ -->
+<a class="back" href="index.html">† RETURN †</a>
+
 <div class="container">
 
     <a class="link" href="https://soundcloud.com/roseinblunt?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank">† SØUNDCLØUD †</a>
+
     <a class="link" href="https://open.spotify.com/artist/4tIKczrEo6trUkUALAy8gq?si=TZkmQsIdSjueEPrQpxYk3Q&nd=1&dlsi=6eedb40fe7964f90" target="_blank">† SPØTIFY †</a>
+
     <a class="link" href="https://www.youtube.com/channel/UC5IjZwjC7uOUaZ1RBVH6KsA" target="_blank">† YØUTUBE †</a>
+
     <a class="link" href="https://music.apple.com/us/artist/roseinblunt/1802382899" target="_blank">† ÅPPLE MÜSIC †</a>
+
     <a class="link" href="https://www.tiktok.com/@roseinbluntt?_t=ZS-8zFvttYuRSK&_r=1" target="_blank">† TIK†TOK †</a>
+
     <a class="link" href="https://www.instagram.com/roseinblunt" target="_blank">† INSTÅGRÅM †</a>
+
     <a class="link" href="https://t.me/roseinbluntt" target="_blank">† TELEGRÅM †</a>
 
 </div>
