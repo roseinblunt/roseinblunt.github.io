@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>roseinblunt! — links</title>
@@ -19,7 +18,7 @@ body {
     color: white;
 }
 
-/* ВИДЕО ФОН */
+/* VIDEO */
 #bg-video {
     position: fixed;
     top: 50%;
@@ -31,7 +30,6 @@ body {
     z-index: -2;
 }
 
-/* затемнение */
 .overlay {
     position: fixed;
     inset: 0;
@@ -39,7 +37,6 @@ body {
     z-index: -1;
 }
 
-/* контейнер */
 .container {
     position: relative;
     z-index: 1;
@@ -50,62 +47,61 @@ body {
     flex-direction: column;
 }
 
-/* кнопки */
+/* LINKS */
 .link {
     margin: 8px;
     padding: 12px 30px;
-    border: 0px solid white;
     color: white;
     text-decoration: none;
     letter-spacing: 2px;
-    transition: 0.3s;
     text-shadow: 0 0 5px white;
     mix-blend-mode: difference;
     animation: shake 0.2s infinite;
+    transition: 0.3s;
 }
 
 .link:hover {
-   opacity: 0.6;
+    opacity: 0.6;
 }
 
-/* тряска */
 @keyframes shake {
     0% { transform: translate(0px, 0px); }
     50% { transform: translate(1px, -1px); }
     100% { transform: translate(0px, 0px); }
 }
 
-/* кнопка назад */
+/* RETURN */
 .back {
     position: fixed;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    
-    z-index: 10;
-
     font-size: 12px;
     letter-spacing: 3px;
     opacity: 0.4;
     cursor: pointer;
     transition: 0.3s;
-
     color: white;
     text-shadow: 0 0 5px white;
+    z-index: 10;
 }
 
 .back:hover {
     opacity: 0.8;
 }
 
-/* адаптив */
-@media (max-width: 768px) {
+/* GLITCH EFFECT */
+.glitch {
+    animation: glitch 0.25s;
+}
 
-    .link {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
-
+@keyframes glitch {
+    0% { transform: translate(0); filter: invert(0); }
+    20% { transform: translate(-5px, 3px); }
+    40% { transform: translate(5px, -3px); }
+    60% { transform: translate(-3px, 2px); }
+    80% { transform: translate(3px, -2px); }
+    100% { transform: translate(0); filter: invert(0); }
 }
 
 </style>
@@ -121,22 +117,28 @@ body {
 
 <div class="container">
 
-    <a class="link" href="https://soundcloud.com/roseinblunt?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank">† SØUNDCLØUD †</a>
-    <a class="link" href="https://open.spotify.com/artist/4tIKczrEo6trUkUALAy8gq?si=TZkmQsIdSjueEPrQpxYk3Q&nd=1&dlsi=6eedb40fe7964f90" target="_blank">† SPØTIFY †</a>
-    <a class="link" href="https://www.youtube.com/channel/UC5IjZwjC7uOUaZ1RBVH6KsA" target="_blank">† YØUTUBE †</a>
-    <a class="link" href="https://music.apple.com/us/artist/roseinblunt/1802382899" target="_blank">† ÅPPLE MÜSIC †</a>
-    <a class="link" href="https://www.tiktok.com/@roseinbluntt?_t=ZS-8zFvttYuRSK&_r=1" target="_blank">† TIK†TOK †</a>
-    <a class="link" href="https://www.instagram.com/roseinblunt" target="_blank">† INSTÅGRÅM †</a>
-    <a class="link" href="https://t.me/roseinbluntt" target="_blank">† TELEGRÅM †</a>
+    <a class="link" href="https://soundcloud.com/roseinblunt" target="_blank">† SØUNDCLØUD †</a>
+    <a class="link" href="https://open.spotify.com" target="_blank">† SPØTIFY †</a>
+    <a class="link" href="https://youtube.com" target="_blank">† YØUTUBE †</a>
+    <a class="link" href="https://music.apple.com" target="_blank">† ÅPPLE MÜSIC †</a>
+    <a class="link" href="https://tiktok.com" target="_blank">† TIK†TOK †</a>
+    <a class="link" href="https://instagram.com" target="_blank">† INSTÅGRÅM †</a>
+    <a class="link" href="https://t.me" target="_blank">† TELEGRÅM †</a>
 
 </div>
 
 <div class="back" onclick="goBack()">† RETURN †</div>
 
 <script>
+
 function goBack() {
-    window.location.href = "index.html";
+    document.body.classList.add("glitch");
+
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 200);
 }
+
 </script>
 
 </body>
