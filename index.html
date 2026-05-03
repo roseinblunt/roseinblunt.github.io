@@ -88,7 +88,7 @@ body {
     100% { opacity: 0.98; }
 }
 
-/* ГЛАВНАЯ КНОПКА */
+/* КНОПКА */
 .main-btn {
     opacity: 0;
     animation: fadeIn 2s forwards;
@@ -120,7 +120,7 @@ body {
     opacity: 0.6;
 }
 
-/* ВТОРИЧНЫЕ */
+/* вторичные */
 .secondary {
     margin-top: 20px;
     font-size: 12px;
@@ -141,7 +141,7 @@ body {
     letter-spacing: 2px;
 }
 
-/* ГЛИТЧ ЭФФЕКТ */
+/* glitch */
 .glitch {
     animation: glitch 0.25s;
 }
@@ -155,7 +155,6 @@ body {
     100% { transform: translate(0); filter: invert(0); }
 }
 
-/* адаптив */
 @media (max-width: 768px) {
     .logo { width: 180px; }
 }
@@ -164,6 +163,10 @@ body {
 </head>
 
 <body>
+
+<!-- AUDIO -->
+<audio id="hoverSound" src="hover.mp3"></audio>
+<audio id="clickSound" src="click.mp3"></audio>
 
 <video autoplay muted loop playsinline id="bg-video">
   <source src="video2.mp4" type="video/mp4">
@@ -186,9 +189,41 @@ body {
 
 <script>
 
-/* ГЛИТЧ ПРИ КЛИКЕ */
+let audioUnlocked = false;
+
+const hoverSound = document.getElementById("hoverSound");
+const clickSound = document.getElementById("clickSound");
+
+/* разблокировка звука */
+function unlockAudio() {
+    if (!audioUnlocked) {
+        hoverSound.volume = 0.4;
+        clickSound.volume = 0.5;
+        audioUnlocked = true;
+    }
+}
+
+document.addEventListener("click", unlockAudio);
+document.addEventListener("mousemove", unlockAudio);
+
+/* hover */
+document.querySelectorAll("a, .secondary, #logo").forEach(el => {
+    el.addEventListener("mouseenter", () => {
+        if (!audioUnlocked) return;
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+    });
+});
+
+/* click + glitch */
 document.getElementById("invoke").addEventListener("click", function(e){
     e.preventDefault();
+
+    if (audioUnlocked) {
+        clickSound.currentTime = 0;
+        clickSound.play();
+    }
+
     document.body.classList.add("glitch");
 
     setTimeout(() => {
@@ -196,10 +231,16 @@ document.getElementById("invoke").addEventListener("click", function(e){
     }, 200);
 });
 
-/* СЕКРЕТ — 5 кликов по лого */
+/* секрет */
 let clicks = 0;
 document.getElementById("logo").addEventListener("click", () => {
     clicks++;
+
+    if (audioUnlocked) {
+        clickSound.currentTime = 0;
+        clickSound.play();
+    }
+
     if(clicks >= 1){
         window.location.href = "secret.html";
     }
