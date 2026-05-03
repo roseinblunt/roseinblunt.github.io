@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>roseinblunt!</title>
+
 <link rel="icon" type="image/x-icon" href="favicon5.ico">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
@@ -17,7 +19,7 @@ body {
     background: black;
     font-family: 'IM Fell English', serif;
     color: white;
-     isolation: isolate;
+    isolation: isolate;
 }
 
 /* ВИДЕО */
@@ -33,7 +35,7 @@ body {
     mix-blend-mode: difference;
 }
 
-/* затемнение */
+/* overlay */
 .overlay {
     position: fixed;
     inset: 0;
@@ -52,25 +54,20 @@ body {
     flex-direction: column;
 }
 
-/* 🔥 ЛОГО С VHS ТРЯСКОЙ */
+/* ЛОГО */
 .logo {
     width: 300px;
     margin-bottom: 50px;
-    
-    filter: drop-shadow(0 0 12px rgba(255,255,255,0.15));
-    
-    animation: 
-        shake 0.3s infinite,
-        flicker 2s infinite;
-    
-     mix-blend-mode: difference;
 
-    filter: 
+    animation: shake 0.3s infinite, flicker 2s infinite;
+    mix-blend-mode: difference;
+
+    filter:
         drop-shadow(0 0 8px rgba(255,255,255,0.25))
         drop-shadow(0 0 20px rgba(255,255,255,0.1));
 }
 
-/* тряска как пленка */
+/* тряска */
 @keyframes shake {
     0% { transform: translate(0px, 0px) rotate(0deg); }
     25% { transform: translate(0.4px, -0.4px) rotate(-0.2deg); }
@@ -79,7 +76,7 @@ body {
     100% { transform: translate(0px, 0px) rotate(0deg); }
 }
 
-
+/* мерцание */
 @keyframes flicker {
     0% { opacity: 1; }
     5% { opacity: 0.85; }
@@ -91,40 +88,78 @@ body {
     100% { opacity: 0.98; }
 }
 
-/* кнопка */
-a {
-    animation: shakerr 0.2s infinite;
+/* ГЛАВНАЯ КНОПКА */
+.main-btn {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: 1.2s;
+
+    animation-name: fadeIn, shakerr;
+    animation-duration: 2s, 0.2s;
+    animation-delay: 1.2s, 1.2s;
+    animation-fill-mode: forwards;
+
     color: white;
     text-decoration: none;
-    letter-spacing: 2px;
-    transition: 0.3s;
-   
+    letter-spacing: 3px;
     text-shadow: 0 0 5px white;
-     mix-blend-mode: difference;
+    mix-blend-mode: difference;
 }
-    @keyframes shakerr {
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes shakerr {
     0% { transform: translate(0px, 0px); }
     50% { transform: translate(0.7px, -0.7px); }
     100% { transform: translate(0px, 0px); }
-}    
+}
 
-a:hover {
+.main-btn:hover {
     opacity: 0.6;
 }
 
-    
-@media (max-width: 768px) {
-    .logo {
-        width: 180px;
-        margin-bottom: 30px;
-    }
-    a {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
+/* ВТОРИЧНЫЕ */
+.secondary {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.25;
+    transition: 0.3s;
 }
 
-    
+.secondary:hover {
+    opacity: 0.7;
+}
+
+/* микро текст */
+.whisper {
+    position: absolute;
+    bottom: 30px;
+    font-size: 10px;
+    opacity: 0.15;
+    letter-spacing: 2px;
+}
+
+/* ГЛИТЧ ЭФФЕКТ */
+.glitch {
+    animation: glitch 0.25s;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); filter: invert(0); }
+    20% { transform: translate(-5px, 3px); filter: invert(1); }
+    40% { transform: translate(5px, -3px); }
+    60% { transform: translate(-3px, 2px); }
+    80% { transform: translate(3px, -2px); }
+    100% { transform: translate(0); filter: invert(0); }
+}
+
+/* адаптив */
+@media (max-width: 768px) {
+    .logo { width: 180px; }
+}
+
 </style>
 </head>
 
@@ -137,9 +172,40 @@ a:hover {
 <div class="overlay"></div>
 
 <div class="container">
-    <img src="logo.png" class="logo">
-    <a href="links.html">† INVOKE †</a>
+
+    <img src="logo.png" class="logo" id="logo">
+
+    <a href="links.html" class="main-btn" id="invoke">† LINKS †</a>
+
+    <div class="secondary">† MERCH † (soon)</div>
+    <div class="secondary">† TICKETS † (soon)</div>
+
 </div>
+
+<div class="whisper">nothing is real</div>
+
+<script>
+
+/* ГЛИТЧ ПРИ КЛИКЕ */
+document.getElementById("invoke").addEventListener("click", function(e){
+    e.preventDefault();
+    document.body.classList.add("glitch");
+
+    setTimeout(() => {
+        window.location.href = "links.html";
+    }, 200);
+});
+
+/* СЕКРЕТ — 5 кликов по лого */
+let clicks = 0;
+document.getElementById("logo").addEventListener("click", () => {
+    clicks++;
+    if(clicks >= 5){
+        window.location.href = "secret.html";
+    }
+});
+
+</script>
 
 </body>
 </html>
