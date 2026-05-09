@@ -163,10 +163,30 @@ document.getElementById("invoke").onclick=function(e){
  setTimeout(()=>location.href="links.html",200);
 };
 
-document.getElementById("logo").onclick=()=>{
- clickSound.play();
- location.href="secret.html";
+
+    
+let logoClicks = 0;
+
+document.getElementById("logo").onclick = () => {
+    clickSound.play();
+
+    logoClicks++;
+
+    if (logoClicks >= 2) {
+        location.href = "???.html";
+    }
+
+    /* сбросить счётчик через 2 секунды,
+       если второй клик не был сделан */
+    clearTimeout(window.logoClickTimer);
+    window.logoClickTimer = setTimeout(() => {
+        logoClicks = 0;
+    }, 2000);
 };
+
+
+
+    
 </script>
 
 </body>
